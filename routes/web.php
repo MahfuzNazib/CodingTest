@@ -26,4 +26,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('product', 'ProductController');
     Route::resource('blog', 'BlogController');
     Route::resource('blog-category', 'BlogCategoryController');
+
+    // Product Searching
+    Route::post('/product_searching', 'ProductController@searching')->name('product.searching');
 });

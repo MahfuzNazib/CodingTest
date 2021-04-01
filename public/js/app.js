@@ -2118,11 +2118,22 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error);
       });
       console.log(product);
+    },
+    getProductInfo: function getProductInfo() {
+      console.log('This Function Called');
+      var app = this;
+      var id = app.$route.params.id;
+      axios.get('/product/' + id + '/edit').then(function (resp) {
+        app.product_name = resp.data.product_name;
+        app.product_sku = resp.data.product_sku;
+        app.description = resp.data.description;
+      });
     }
   },
   mounted: function mounted() {
-    console.log('Component mounted.');
-    this.checkVariant();
+    console.log('Component mounted.'); // this.checkVariant();
+
+    this.getProductInfo();
   }
 });
 

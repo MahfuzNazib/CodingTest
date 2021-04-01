@@ -74,7 +74,8 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         $variants = Variant::all();
-        return view('products.edit', compact('variants'));
+        $product = Product::find($product);
+        return view('products.edit', compact('variants', 'product'));
     }
 
     /**
@@ -98,5 +99,14 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
+    }
+
+    public function searching(Request $request){
+        $data = $request->all();
+        if($data['title']){
+            $search_result = Product::with('product_variants', 'product_variant_prices')->where('title', $data['title'])->get();
+        }
+
+        return view('products.search', compact('search_result'));
     }
 }

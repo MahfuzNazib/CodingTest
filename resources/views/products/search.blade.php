@@ -55,7 +55,7 @@
                     @php
                         $i = 1;
                     @endphp
-                    @foreach($products as $product)
+                    @foreach($search_result as $product)
                     
                     <tr>
                         <td>{{$i}}</td>
@@ -97,14 +97,7 @@
         </div>
 
         <div class="card-footer">
-            <div class="row justify-content-between">
-                <div class="col-md-6">
-                    <p>Showing 1 to {{ $products->count() }} out of 5</p>
-                </div>
-                <div class="col-md-2">
-                {{ $products->links() }}
-                </div>
-            </div>
+            
         </div>
     </div>
 
