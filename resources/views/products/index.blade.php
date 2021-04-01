@@ -94,7 +94,7 @@
                     <p>Showing 1 to 10 out of 100</p>
                 </div>
                 <div class="col-md-2">
-
+                {{ $products->links() }}
                 </div>
             </div>
         </div>

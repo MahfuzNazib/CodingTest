@@ -17,7 +17,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::with('product_variants', 'product_variant_prices')->paginate(20);
+        $products = Product::with('product_variants', 'product_variant_prices')->paginate(3);
         // dd($products);exit();
         // return $products;
         return view('products.index', compact('products'));
@@ -44,12 +44,12 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        return $data;
-        // Product::addNewProduct($data);
+        // return $data;
+        Product::addNewProduct($data);
 
-        // return response()->json([
-        //     'status' => 'Success'
-        // ],200);
+        return response()->json([
+            'status' => 'Success'
+        ],200);
 
     }
 
