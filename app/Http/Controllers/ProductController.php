@@ -17,7 +17,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('products.index');
+        $products = Product::with('product_variants', 'product_variant_prices')->paginate(20);
+        // dd($products);exit();
+        // return $products;
+        return view('products.index', compact('products'));
     }
 
     /**
@@ -28,7 +31,8 @@ class ProductController extends Controller
     public function create()
     {
         $variants = Variant::all();
-        return view('products.create', compact('variants'));
+        $product_variant_prices = ProductVariantPrice::all();
+        return view('products.create', compact('variants', 'product_variant_prices'));
     }
 
     /**
@@ -39,6 +43,13 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $data = $request->all();
+        return $data;
+        // Product::addNewProduct($data);
+
+        // return response()->json([
+        //     'status' => 'Success'
+        // ],200);
 
     }
 

@@ -191,17 +191,19 @@ export default {
 
             axios.post('/product', product).then(response => {
                 console.log(response.data);
+                if(response.data.status == 'Success'){
+                    alert('Product Successfully Addedd');
+                }
             }).catch(error => {
                 console.log(error);
             })
 
             console.log(product);
         }
-
-
     },
     mounted() {
         console.log('Component mounted.')
+        this.checkVariant();
     }
 }
 </script>
